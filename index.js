@@ -11,5 +11,8 @@ container: 'map', // container id
 style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
 center: [-0.12574, 51.50853], // starting position [lng, lat]
 maxBounds:bounds,
+attributionControl: false,
 zoom: 9 // starting zoom
-});
+}).addControl(new mapboxgl.AttributionControl({
+    compact: true
+}));
