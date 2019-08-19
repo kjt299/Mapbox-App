@@ -42,9 +42,27 @@ body {
     text-align: center;
   }
 
-  .sidebar p{
+  .sidebar h1{
     font-size:20px;
     color:white;
     margin-top:15px;
     font-weight: bold;
+  }
+
+  .item{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin:10px;
+    padding:0;
+  }
+
+  .title{
+    color:white;
+    font-size: 16px;
+    font-weight:bold;
+  }
+
+  .address{
+    color:white;
+    font-size: 14px;
   }
