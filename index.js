@@ -38,7 +38,8 @@ const geojson = {
       properties: {
         title: 'Buckingham Palace',
         address:'Westminster, London SW1A 1AA',
-        id:'1'
+        id:'1',
+        markerID:'1id'
       }
     },
     {
@@ -50,7 +51,8 @@ const geojson = {
       properties: {
         title: 'London Eye',
         address:'Lambeth, London SE1 7PB',
-        id: '2'
+        id: '2',
+        markerID:'2id'
       }
     },
     {
@@ -62,7 +64,8 @@ const geojson = {
         properties: {
           title: 'Big Ben',
           address:'Westminster, London SW1A 0AA',
-          id:'3'
+          id:'3',
+          markerID:'3id'
         }
       },
       {
@@ -74,7 +77,8 @@ const geojson = {
         properties: {
           title: 'The Tower of London',
           address:'St Katharine\'s & Wapping, London EC3N 4AB',
-          id:'4'
+          id:'4',
+          markerID:'4id'
         }
       },
       {
@@ -86,7 +90,8 @@ const geojson = {
         properties: {
           title: 'British Museum',
           address:'Great Russell St, Bloomsbury, London WC1B 3DG',
-          id:'5'
+          id:'5',
+          markerID:'5id'
         }
       },
       {
@@ -98,17 +103,21 @@ const geojson = {
         properties: {
           title: 'St Paul\'s Cathedral',
           address:'St. Paul\'s Churchyard, London EC4M 8AD',
-          id:'6'
+          id:'6',
+          markerID:'6id'
         }
       }]
 };
 
+let markers = [];
 // add markers to map
 function addMarkers(map) {
     geojson.features.forEach(function(marker) {
+      markers.push(marker);
     // create a HTML element for each feature
     var el = document.createElement('div');
     el.className = 'marker';
+    el.id = marker.properties.id + "id";
     // make a marker for each feature and add to the map
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
@@ -152,14 +161,21 @@ function filterResults() {
 
   // Loop through all list items, and hide those who don't match the search query
   for (let i = 0; i < landmarks.length; i++) {
-    console.log(landmarks.length);
     if (!landmarks[i].toLowerCase().includes(input.toLowerCase())) {
-      console.log("includes? " + landmarks[i]);
-      console.log("id: " + geojson.features[i].properties.id);
       document.getElementById(geojson.features[i].properties.id).style.display = "none";
+      document.getElementById(geojson.features[i].properties.markerID).style.backgroundImage = "none";
     }
     else{
       document.getElementById(geojson.features[i].properties.id).style.display = "";
+      document.getElementById(geojson.features[i].properties.markerID).style.backgroundImage = "";
     }
   }
 }
+
+/*
+console.log(document.getElementById(i + "id"));
+document.getElementById(i + "id").style.backgroundImage = "none";
+ console.log(document.getElementById(i + "id"));
+      document.getElementById(i + "id").style.backgroundImage = "none";
+
+*/
