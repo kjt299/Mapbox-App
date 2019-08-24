@@ -37,7 +37,8 @@ const geojson = {
       },
       properties: {
         title: 'Buckingham Palace',
-        address:'sample'
+        address:'Westminster, London SW1A 1AA',
+        id:'1'
       }
     },
     {
@@ -48,7 +49,8 @@ const geojson = {
       },
       properties: {
         title: 'London Eye',
-        address:'sample'
+        address:'Lambeth, London SE1 7PB',
+        id: '2'
       }
     },
     {
@@ -59,7 +61,8 @@ const geojson = {
         },
         properties: {
           title: 'Big Ben',
-          address:'sample'
+          address:'Westminster, London SW1A 0AA',
+          id:'3'
         }
       },
       {
@@ -70,7 +73,8 @@ const geojson = {
         },
         properties: {
           title: 'The Tower of London',
-          address:'sample'
+          address:'St Katharine\'s & Wapping, London EC3N 4AB',
+          id:'4'
         }
       },
       {
@@ -81,7 +85,8 @@ const geojson = {
         },
         properties: {
           title: 'British Museum',
-          address:'sample'
+          address:'Great Russell St, Bloomsbury, London WC1B 3DG',
+          id:'5'
         }
       },
       {
@@ -92,7 +97,8 @@ const geojson = {
         },
         properties: {
           title: 'St Paul\'s Cathedral',
-          address:'sample'
+          address:'St. Paul\'s Churchyard, London EC4M 8AD',
+          id:'6'
         }
       }]
 };
@@ -117,19 +123,43 @@ function populateSidebar(data) {
   // Iterate through the list of landmarks
   for (i = 0; i < data.features.length; i++) {
     let currentFeature = data.features[i];
-    // Select the listing container in the HTML and append a div with the class 'item' for each store
+    // Select the listing container in the HTML and append a div with the class 'item' for each landmark
     let landmarks = document.getElementById('landmarks');
     let landmark = landmarks.appendChild(document.createElement('div'));
     landmark.className = 'item';
-    landmark.id = 'landmark-' + i;
+    landmark.id = currentFeature.properties.id;
 
-    const title = landmark.appendChild(document.createElement('div'));
+    // Create a new link with the class 'title' for each landmark
+    const title = landmark.appendChild(document.createElement('p'));
     title.className = 'title';
     title.innerHTML = currentFeature.properties.title;
 
     // Create a new div with the class 'details' for each store and fill it with the title and description
-    const address = landmark.appendChild(document.createElement('div'));
+    const address = landmark.appendChild(document.createElement('p'));
     address.className = 'address';
     address.innerHTML = currentFeature.properties.address;
+  }
+}
+
+function filterResults() {
+  const landmarks = [];
+  for( let i = 0; i < geojson.features.length; i++){
+    landmarks.push(geojson.features[i].properties.title); 
+  }
+  let input = document.getElementById('myInput').value;
+  console.log("input: " + input);
+  console.log(landmarks);
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (let i = 0; i < landmarks.length; i++) {
+    console.log(landmarks.length);
+    if (!landmarks[i].toLowerCase().includes(input.toLowerCase())) {
+      console.log("includes? " + landmarks[i]);
+      console.log("id: " + geojson.features[i].properties.id);
+      document.getElementById(geojson.features[i].properties.id).style.display = "none";
+    }
+    else{
+      document.getElementById(geojson.features[i].properties.id).style.display = "";
+    }
   }
 }
