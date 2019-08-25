@@ -1,9 +1,13 @@
 body { 
-    margin:0; padding:0; 
+    margin:0; 
+    padding:0; 
 }
 
 #map { 
-    position:absolute; top:0; bottom:0; width:100%;
+    position:absolute; 
+    top:0; 
+    bottom:0; 
+    width:100%;
 }
 
 .marker {
@@ -40,6 +44,10 @@ body {
     border:1px solid black;
     border-radius: 10px;
     text-align: center;
+  }
+
+  .hide-sidebar{
+    display:none;
   }
 
   .sidebar h1{
@@ -116,4 +124,13 @@ body {
 
 .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
   border-bottom-color: #91c949;
+}
+
+.icon{
+  left:2%;
+  top:2%;
+  font-size: 26px;
+  color:black;
+  position:absolute; 
+  z-index: 99;
 }
