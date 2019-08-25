@@ -24,6 +24,96 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: bold;
-    border-radius: 3%;
+    border-radius: 10px;
     border: 1px solid black;
   }
+
+  .sidebar {
+    width: 15%;
+    min-width: 150px;
+    position:absolute; 
+    top:50px; 
+    bottom:50px; 
+    left:10px;
+    z-index: 99;
+    background-color:grey;
+    border:1px solid black;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  .sidebar h1{
+    font-size:20px;
+    color:white;
+    margin-top:15px;
+    font-weight: bold;
+  }
+
+  .item{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin:10px;
+    padding:0;
+  }
+
+  .title{
+    color:white;
+    font-size: 16px;
+    font-weight:bold;
+  }
+
+  .address{
+    color:white;
+    font-size: 14px;
+  }
+
+  /*to be deleted*/
+
+  /* Marker tweaks */
+.mapboxgl-popup-close-button {
+  display: none;
+}
+
+.mapboxgl-popup-content {
+  font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
+  padding: 0;
+  width: 180px;
+}
+
+.mapboxgl-popup-content-wrapper {
+  padding: 1%;
+}
+
+.mapboxgl-popup-content h3 {
+  background: #91c949;
+  color: #fff;
+  margin: 0;
+  display: block;
+  padding: 10px;
+  border-radius: 3px 3px 0 0;
+  font-weight: 700;
+  margin-top: -15px;
+}
+
+.mapboxgl-popup-content h4 {
+  margin: 0;
+  display: block;
+  padding: 10px;
+  font-weight: 400;
+}
+
+.mapboxgl-popup-content div {
+  padding: 10px;
+}
+
+.mapboxgl-container .leaflet-marker-icon {
+  cursor: pointer;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-content {
+  margin-top: 15px;
+}
+
+.mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
+  border-bottom-color: #91c949;
+}

@@ -23,6 +23,7 @@ function setUpMap() {
 //display map on load
 window.onload = function() {
     setUpMap();
+    populateSidebar(geojson);
 }
 
 //store markers
@@ -35,7 +36,10 @@ const geojson = {
         coordinates: [-0.140634, 51.501476]
       },
       properties: {
-        title: 'Buckingham Palace'
+        title: 'Buckingham Palace',
+        address:'Westminster, London SW1A 1AA',
+        id:'1',
+        markerID:'1id'
       }
     },
     {
@@ -45,7 +49,10 @@ const geojson = {
         coordinates: [-0.119519, 51.503399]
       },
       properties: {
-        title: 'London Eye'
+        title: 'London Eye',
+        address:'Lambeth, London SE1 7PB',
+        id: '2',
+        markerID:'2id'
       }
     },
     {
@@ -55,7 +62,10 @@ const geojson = {
           coordinates: [-0.116773, 51.510357]
         },
         properties: {
-          title: 'Big Ben'
+          title: 'Big Ben',
+          address:'Westminster, London SW1A 0AA',
+          id:'3',
+          markerID:'3id'
         }
       },
       {
@@ -65,7 +75,10 @@ const geojson = {
           coordinates: [-0.076132, 51.508530]
         },
         properties: {
-          title: 'The Tower of London'
+          title: 'The Tower of London',
+          address:'St Katharine\'s & Wapping, London EC3N 4AB',
+          id:'4',
+          markerID:'4id'
         }
       },
       {
@@ -75,7 +88,10 @@ const geojson = {
           coordinates: [-0.126168, 51.518757]
         },
         properties: {
-          title: 'British Museum'
+          title: 'British Museum',
+          address:'Great Russell St, Bloomsbury, London WC1B 3DG',
+          id:'5',
+          markerID:'5id'
         }
       },
       {
@@ -85,17 +101,23 @@ const geojson = {
           coordinates: [-0.098056, 51.513611]
         },
         properties: {
-          title: 'St Paul\'s Cathedral'
+          title: 'St Paul\'s Cathedral',
+          address:'St. Paul\'s Churchyard, London EC4M 8AD',
+          id:'6',
+          markerID:'6id'
         }
       }]
 };
 
+let markers = [];
 // add markers to map
 function addMarkers(map) {
     geojson.features.forEach(function(marker) {
+      markers.push(marker);
     // create a HTML element for each feature
     var el = document.createElement('div');
     el.className = 'marker';
+    el.id = marker.properties.id + "id";
     // make a marker for each feature and add to the map
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
@@ -104,3 +126,56 @@ function addMarkers(map) {
       .addTo(map);
   });
 } 
+
+//populate sidebar
+function populateSidebar(data) {
+  // Iterate through the list of landmarks
+  for (i = 0; i < data.features.length; i++) {
+    let currentFeature = data.features[i];
+    // Select the listing container in the HTML and append a div with the class 'item' for each landmark
+    let landmarks = document.getElementById('landmarks');
+    let landmark = landmarks.appendChild(document.createElement('div'));
+    landmark.className = 'item';
+    landmark.id = currentFeature.properties.id;
+
+    // Create a new link with the class 'title' for each landmark
+    const title = landmark.appendChild(document.createElement('p'));
+    title.className = 'title';
+    title.innerHTML = currentFeature.properties.title;
+
+    // Create a new div with the class 'details' for each store and fill it with the title and description
+    const address = landmark.appendChild(document.createElement('p'));
+    address.className = 'address';
+    address.innerHTML = currentFeature.properties.address;
+  }
+}
+
+function filterResults() {
+  const landmarks = [];
+  for( let i = 0; i < geojson.features.length; i++){
+    landmarks.push(geojson.features[i].properties.title); 
+  }
+  let input = document.getElementById('myInput').value;
+  console.log("input: " + input);
+  console.log(landmarks);
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (let i = 0; i < landmarks.length; i++) {
+    if (!landmarks[i].toLowerCase().includes(input.toLowerCase())) {
+      document.getElementById(geojson.features[i].properties.id).style.display = "none";
+      document.getElementById(geojson.features[i].properties.markerID).style.backgroundImage = "none";
+    }
+    else{
+      document.getElementById(geojson.features[i].properties.id).style.display = "";
+      document.getElementById(geojson.features[i].properties.markerID).style.backgroundImage = "";
+    }
+  }
+}
+
+/*
+console.log(document.getElementById(i + "id"));
+document.getElementById(i + "id").style.backgroundImage = "none";
+ console.log(document.getElementById(i + "id"));
+      document.getElementById(i + "id").style.backgroundImage = "none";
+
+*/
