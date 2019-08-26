@@ -105,8 +105,9 @@ function setUpMap() {
 
 //Display map on load
 window.onload = function() {
-    setUpMap();
-    populateSidebar();
+  sidebar.className = "hide-sidebar";
+  setUpMap();
+  populateSidebar();
 }
 
 // Add markers to the map

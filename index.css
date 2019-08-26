@@ -35,7 +35,7 @@ body {
 
   .sidebar {
     width: 15%;
-    min-width: 150px;
+    min-width: 200px;
     position:absolute; 
     top:50px; 
     bottom:50px; 
