@@ -1,9 +1,14 @@
 body { 
-    margin:0; padding:0; 
+    margin:0; 
+    padding:0; 
+    font-family: 'EB Garamond', serif;
 }
 
 #map { 
-    position:absolute; top:0; bottom:0; width:100%;
+    position:absolute; 
+    top:0; 
+    bottom:0; 
+    width:100%;
 }
 
 .marker {
@@ -36,17 +41,21 @@ body {
     bottom:50px; 
     left:10px;
     z-index: 99;
-    background-color:grey;
+    background-color:#031e4a;
     border:1px solid black;
     border-radius: 10px;
     text-align: center;
+    overflow: auto;
+  }
+
+  .hide-sidebar{
+    display:none;
   }
 
   .sidebar h1{
-    font-size:20px;
+    font-size:21px;
     color:white;
     margin-top:15px;
-    font-weight: bold;
   }
 
   .item{
@@ -54,20 +63,23 @@ body {
     border-radius: 5px;
     margin:10px;
     padding:0;
+    background-color: #cce8ed;
   }
 
   .title{
-    color:white;
-    font-size: 16px;
-    font-weight:bold;
+    color:black;
+    font-size: 18px;
+    margin:7px;
+    padding:0;
+    font-weight: bold;
   }
 
   .address{
-    color:white;
+    color:black;
     font-size: 14px;
+    margin:7px;
+    padding:0;
   }
-
-  /*to be deleted*/
 
   /* Marker tweaks */
 .mapboxgl-popup-close-button {
@@ -116,4 +128,29 @@ body {
 
 .mapboxgl-popup-anchor-top > .mapboxgl-popup-tip {
   border-bottom-color: #91c949;
+}
+
+.icon{
+  left:2%;
+  top:2%;
+  font-size: 26px;
+  color:black;
+  position:absolute; 
+  z-index: 99;
+}
+
+.icon:hover{
+  color:red;
+}
+
+@media only screen and (max-width: 550 px){
+  .sidebar h1{
+    font-size: 18px;
+  }
+  .title{
+    font-size: 15px;
+  }
+  .address{
+    font-size: 11px;
+  }
 }
