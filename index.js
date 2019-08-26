@@ -92,7 +92,7 @@ function setUpMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2p0Mjk5IiwiYSI6ImNqemZpbWxjMjBjazczbnFrOG40dWlyaXgifQ.s9W5PFPvWY0cSmZsqioqdg';
     const map = new mapboxgl.Map({
         container: 'map', // container id
-        style: 'mapbox://styles/mapbox/streets-v11', // stylesheet location
+        style: 'mapbox://styles/kjt299/cjzrjjbkb4a8q1co3vp7ckf3b', // stylesheet location
         center: [-0.12574, 51.50853], // starting position [lng, lat]
         maxBounds:bounds,
         attributionControl: false,
@@ -163,5 +163,14 @@ function filterResults() {
       document.getElementById(geojson.features[i].properties.id).style.display = "";
       document.getElementById(geojson.features[i].properties.markerId).style.backgroundImage = "";
     }
+  }
+}
+
+function toogleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  if (sidebar.className === "sidebar") {
+    sidebar.className = "hide-sidebar";
+  } else {
+    sidebar.className = "sidebar";
   }
 }
