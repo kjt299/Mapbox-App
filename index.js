@@ -1,86 +1,3 @@
-//Store markers
-const geojson = {
-  type: 'FeatureCollection',
-  features: [{
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-0.140634, 51.501476]
-    },
-    properties: {
-      title: 'Buckingham Palace',
-      address:'Westminster, London SW1A 1AA',
-      id:'1',
-      markerId:'marker-1'
-    }
-  },
-  {
-    type: 'Feature',
-    geometry: {
-      type: 'Point',
-      coordinates: [-0.119519, 51.503399]
-    },
-    properties: {
-      title: 'London Eye',
-      address:'Lambeth, London SE1 7PB',
-      id: '2',
-      markerId:'marker-2'
-    }
-  },
-  {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-0.116773, 51.510357]
-      },
-      properties: {
-        title: 'Big Ben',
-        address:'Westminster, London SW1A 0AA',
-        id:'3',
-        markerId:'marker-3'
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-0.076132, 51.508530]
-      },
-      properties: {
-        title: 'The Tower of London',
-        address:'St Katharine\'s & Wapping, London EC3N 4AB',
-        id:'4',
-        markerId:'marker-4'
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-0.126168, 51.518757]
-      },
-      properties: {
-        title: 'British Museum',
-        address:'Great Russell St, Bloomsbury, London WC1B 3DG',
-        id:'5',
-        markerId:'marker-5'
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [-0.098056, 51.513611]
-      },
-      properties: {
-        title: 'St Paul\'s Cathedral',
-        address:'St. Paul\'s Churchyard, London EC4M 8AD',
-        id:'6',
-        markerId:'marker-6'
-      }
-    }]
-};
-
 //Restricting map view to London only
 const bounds = [[-0.8879165136707741, 51.19892541726361],
                 //southwest coordinates];
@@ -92,7 +9,8 @@ function setUpMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2p0Mjk5IiwiYSI6ImNqemZpbWxjMjBjazczbnFrOG40dWlyaXgifQ.s9W5PFPvWY0cSmZsqioqdg';
     const map = new mapboxgl.Map({
         container: 'map', // container id
-        style: 'mapbox://styles/kjt299/cjzrjjbkb4a8q1co3vp7ckf3b', // stylesheet location
+        style: 'mapbox://styles/mapbox/streets-v11',
+        //style: 'mapbox://styles/kjt299/cjzrjjbkb4a8q1co3vp7ckf3b', // stylesheet location
         center: [-0.12574, 51.50853], // starting position [lng, lat]
         maxBounds:bounds,
         attributionControl: false,
