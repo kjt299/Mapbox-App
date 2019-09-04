@@ -18,6 +18,7 @@ function setUpMap() {
             compact: true
         }));
         addMarkers(map);
+        addLandmarksListener(map);
 }
 
 //Display map on load
@@ -91,4 +92,15 @@ function toogleSidebar() {
   } else {
     sidebar.className = "sidebar";
   }
+}
+
+function addLandmarksListener(map){
+  document.getElementById('landmarks').addEventListener('click', function () {
+  if(event.target.parentNode.id !== "landmarks" || event.target.parentNode.id !== "sidebar") {
+    map.flyTo({
+      center: [geojson.features[event.target.parentNode.id - 1].geometry.coordinates[0], geojson.features[event.target.parentNode.id - 1].geometry.coordinates[1]],
+      zoom: 13
+    });
+  }
+});
 }

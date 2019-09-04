@@ -85,6 +85,14 @@ body {
     padding:0;
   }
 
+  .address:hover{
+    cursor:default;
+  }
+
+  h1:hover{
+    cursor:default;
+  }
+
   /* Marker tweaks */
 .mapboxgl-popup-close-button {
   display: none;
@@ -123,6 +131,12 @@ body {
 
 .icon:hover{
   color:red;
+  cursor: pointer;
+}
+
+.title:hover{
+  opacity:0.4;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 550 px){
