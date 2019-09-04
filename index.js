@@ -10,7 +10,6 @@ function setUpMap() {
     const map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/mapbox/streets-v11',
-        //style: 'mapbox://styles/kjt299/cjzrjjbkb4a8q1co3vp7ckf3b', // stylesheet location
         center: [-0.12574, 51.50853], // starting position [lng, lat]
         maxBounds:bounds,
         attributionControl: false,
