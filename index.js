@@ -17,8 +17,8 @@ function setUpMap() {
         }).addControl(new mapboxgl.AttributionControl({
             compact: true
         }));
-        addMarkers(map);
-        addLandmarksListener(map);
+    addMarkers(map);
+    addLandmarksListener(map);
 }
 
 //Display map on load
@@ -39,7 +39,7 @@ function addMarkers(map) {
     new mapboxgl.Marker(el)
       .setLngLat(marker.geometry.coordinates)
       .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-    .setHTML('<p>' + marker.properties.title + '</p>'))
+      .setHTML('<p>' + marker.properties.title + '</p>'))
       .addTo(map);
   });
 } 
@@ -85,6 +85,7 @@ function filterResults() {
   }
 }
 
+// Show or hide sidebar
 function toogleSidebar() {
   const sidebar = document.getElementById("sidebar");
   if (sidebar.className === "sidebar") {
@@ -96,11 +97,12 @@ function toogleSidebar() {
 
 function addLandmarksListener(map){
   document.getElementById('landmarks').addEventListener('click', function () {
-  if(event.target.parentNode.id !== "landmarks" || event.target.parentNode.id !== "sidebar") {
-    map.flyTo({
-      center: [geojson.features[event.target.parentNode.id - 1].geometry.coordinates[0], geojson.features[event.target.parentNode.id - 1].geometry.coordinates[1]],
-      zoom: 13
-    });
-  }
-});
+    if(event.target.tagName === "P"){
+      toogleSidebar();
+      map.flyTo({
+        center: [geojson.features[event.target.parentNode.id - 1].geometry.coordinates[0], geojson.features[event.target.parentNode.id - 1].geometry.coordinates[1]],
+        zoom: 13
+      });
+     }
+  });
 }
