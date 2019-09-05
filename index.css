@@ -41,7 +41,7 @@ body {
     bottom:0; 
     left:0;
     z-index: 50;
-    background-color:grey;
+    background-color:#474747;
     text-align: center;
     overflow: auto;
   }
@@ -71,7 +71,7 @@ body {
   }
 
   .title{
-   color:black;
+    color:black;
     font-size: 18px;
     margin:7px;
     padding:0;
