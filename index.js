@@ -44,7 +44,7 @@ function addMarkers(map) {
   });
 } 
 
-//populate sidebar
+// Populate sidebar
 function populateSidebar() {
   // Iterate through the list of landmarks
   for (i = 0; i < geojson.features.length; i++) {
@@ -98,7 +98,9 @@ function toogleSidebar() {
 function addLandmarksListener(map){
   document.getElementById('landmarks').addEventListener('click', function () {
     if(event.target.tagName === "P"){
-      toogleSidebar();
+      if(window.innerWidth < 600){
+        toogleSidebar();
+      }
       map.flyTo({
         center: [geojson.features[event.target.parentNode.id - 1].geometry.coordinates[0], geojson.features[event.target.parentNode.id - 1].geometry.coordinates[1]],
         zoom: 13
