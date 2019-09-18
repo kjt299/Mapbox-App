@@ -4,7 +4,6 @@ const bounds = [[-0.8879165136707741, 51.19892541726361],
                 [0.6364365136759886,  51.81604491419381]];
                 //northeast coordinates
 
-//Map setup
 function setUpMap() {
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2p0Mjk5IiwiYSI6ImNqemZpbWxjMjBjazczbnFrOG40dWlyaXgifQ.s9W5PFPvWY0cSmZsqioqdg';
     const map = new mapboxgl.Map({
@@ -21,14 +20,12 @@ function setUpMap() {
     addLandmarksListener(map);
 }
 
-//Display map on load
 window.onload = function() {
   sidebar.className = "hide-sidebar";
   setUpMap();
   populateSidebar();
 }
 
-// Add markers to the map
 function addMarkers(map) {
     geojson.features.forEach(function(marker) {
     // Create a HTML element for each feature
@@ -44,7 +41,6 @@ function addMarkers(map) {
   });
 } 
 
-// Populate sidebar
 function populateSidebar() {
   // Iterate through the list of landmarks
   for (i = 0; i < geojson.features.length; i++) {
@@ -59,7 +55,7 @@ function populateSidebar() {
     title.className = 'title';
     title.innerHTML = geojson.features[i].properties.title;
 
-    // Create a new div with the class 'details' for each store and fill it with the title and description
+    // Create a new div with the class 'address' for each landmark
     let address = landmark.appendChild(document.createElement('p'));
     address.className = 'address';
     address.innerHTML = geojson.features[i].properties.address;
@@ -85,7 +81,6 @@ function filterResults() {
   }
 }
 
-// Show or hide sidebar
 function toogleSidebar() {
   const sidebar = document.getElementById("sidebar");
   if (sidebar.className === "sidebar") {
