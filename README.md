@@ -5,7 +5,7 @@
 This app was created for the Chingu Voyage 11 
 pre-work phase. 
 
-**LIVE LINK :** https://kjt299.github.io/mapbox
+**LIVE LINK :** https://kjt299.github.io/Mapbox-App
 
 ## Features
 
